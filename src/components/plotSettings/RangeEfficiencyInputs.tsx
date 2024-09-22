@@ -19,8 +19,8 @@ const RangeEfficiencyInputs = () => {
 
   return (
     <div>
-      <input type="number" value={range} onFocus={(e)=>{e.target.select()}} onChange={rangeChangeHandler}/>
-      <input type="number" value={efficiency} onFocus={(e)=>{e.target.select()}} onChange={efficiencyChangeHandler}/>
+      <input type="number" name="range" value={range} onFocus={(e)=>{e.target.select()}} onChange={rangeChangeHandler}/>
+      <input type="number" name="efficiency" value={efficiency} onFocus={(e)=>{e.target.select()}} onChange={efficiencyChangeHandler}/>
     </div>
   )
 }

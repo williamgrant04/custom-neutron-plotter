@@ -13,12 +13,12 @@ const SystemInput = ({ placeholder }: { placeholder: string }) => {
   }
 
   return (
-    <>
-      <input type="text" value={value} onChange={changeHandler} placeholder={placeholder}/>
+    <div>
+      <input type="text" value={value} onFocus={(e)=>{e.target.select()}} onChange={changeHandler} name={placeholder.toLowerCase()} placeholder={placeholder}/>
       <ul>
         {autoComplete && autoComplete.map((system) => <li key={system}>{system}</li>)}
       </ul>
-    </>
+    </div>
   )
 }
 
