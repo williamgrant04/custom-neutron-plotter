@@ -12,11 +12,16 @@ const SystemInput = ({ placeholder }: { placeholder: string }) => {
     setAutoComplete(res.data)
   }
 
+  const autoCompleteClickHandler = (e: React.MouseEvent<HTMLLIElement>) => {
+    setValue(e.currentTarget.innerText)
+    setAutoComplete([])
+  }
+
   return (
     <div>
       <input type="text" value={value} onFocus={(e)=>{e.target.select()}} onChange={changeHandler} name={placeholder.toLowerCase()} placeholder={placeholder}/>
       <ul>
-        {autoComplete && autoComplete.map((system) => <li key={system}>{system}</li>)}
+        {autoComplete && autoComplete.map((system) => <li key={system} onClick={autoCompleteClickHandler}>{system}</li>)}
       </ul>
     </div>
   )
