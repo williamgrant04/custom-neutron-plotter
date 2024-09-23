@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 
-interface SystemJump {
+export interface SystemJump {
   distance_jumped: number,
   distance_left: number, // distance left to destination
   id64: number,
