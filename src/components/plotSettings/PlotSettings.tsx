@@ -1,8 +1,11 @@
 import axios from "axios"
 import RangeEfficiencyInputs from "./RangeEfficiencyInputs"
 import SystemInput from "./SystemInput"
+import { useContext } from "react"
+import RouteDataContext from "../../store/routeData"
 
 const PlotSettings = () => {
+  const routeData = useContext(RouteDataContext)
 
   const plotSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -21,10 +24,10 @@ const PlotSettings = () => {
         axios.get(`http://localhost:3000/results?id=${jobID}`).then((response) => {
           if (response.data?.result) {
             clearInterval(fetchJob)
-            console.log(response.data.result)
+            routeData.setRoute(response.data.result)
           }
         })
-      }, 3000)
+      }, 6000)
     }
   }
 
