@@ -13,9 +13,19 @@ const PlotSettings = () => {
       efficiency: e.currentTarget.efficiency.value
     }
     const res = await axios.get(`http://localhost:3000/route?efficiency=${plotData.efficiency}&range=${plotData.range}&from=${plotData.source}&to=${plotData.destination}`)
-    console.log(res.data)
-    {/* This is get because I'm sending it through a custom built proxy and using a get request is just simpler */}
-    {/* Even though I'm aware this doesn't follow best practice */}
+
+    if (res.data?.status === "queued") {
+      const jobID = res.data.job
+
+      const fetchJob = setInterval(() => {
+        axios.get(`http://localhost:3000/results?id=${jobID}`).then((response) => {
+          if (response.data?.result) {
+            clearInterval(fetchJob)
+            console.log(response.data.result)
+          }
+        })
+      }, 3000)
+    }
   }
 
   return (
