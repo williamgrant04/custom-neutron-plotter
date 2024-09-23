@@ -4,7 +4,7 @@ import SystemInput from "./SystemInput"
 
 const PlotSettings = () => {
 
-  const plotSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const plotSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const plotData = {
       source: e.currentTarget.source.value,
@@ -12,7 +12,8 @@ const PlotSettings = () => {
       range: e.currentTarget.range.value,
       efficiency: e.currentTarget.efficiency.value
     }
-    axios.get(`http://localhost:3000/route?from=${plotData.source}&to=${plotData.destination}&range=${plotData.range}&efficiency=${plotData.efficiency}`)
+    const res = await axios.get(`http://localhost:3000/route?efficiency=${plotData.efficiency}&range=${plotData.range}&from=${plotData.source}&to=${plotData.destination}`)
+    console.log(res.data)
     {/* This is get because I'm sending it through a custom built proxy and using a get request is just simpler */}
     {/* Even though I'm aware this doesn't follow best practice */}
   }

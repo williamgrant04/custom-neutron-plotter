@@ -19,7 +19,7 @@ const SystemInput = ({ placeholder }: { placeholder: string }) => {
 
   return (
     <div>
-      <input type="text" value={value} onFocus={(e)=>{e.target.select()}} onChange={changeHandler} name={placeholder.toLowerCase()} placeholder={placeholder}/>
+      <input autoComplete="off" type="text" value={value} onFocus={(e)=>{e.target.select()}} onChange={changeHandler} name={placeholder.toLowerCase()} placeholder={placeholder}/>
       <ul>
         {autoComplete && autoComplete.map((system) => <li key={system} onClick={autoCompleteClickHandler}>{system}</li>)}
       </ul>
