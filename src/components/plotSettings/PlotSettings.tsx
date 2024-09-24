@@ -49,6 +49,8 @@ const PlotSettings = () => {
 
 const SettingsContainer = styled.div`
   position: sticky;
+  top: 0;
+  height: 220px;
 `
 
 const Settings = styled.form`

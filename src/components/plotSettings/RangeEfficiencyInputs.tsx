@@ -20,8 +20,14 @@ const RangeEfficiencyInputs = () => {
 
   return (
     <REInputsContainer>
-      <Input type="number" name="range" value={range} onFocus={(e)=>{e.target.select()}} onChange={rangeChangeHandler}/>
-      <Input type="number" name="efficiency" value={efficiency} onFocus={(e)=>{e.target.select()}} onChange={efficiencyChangeHandler}/>
+      <div>
+        <p>Range</p>
+        <Input type="number" name="range" value={range} onFocus={(e)=>{e.target.select()}} onChange={rangeChangeHandler}/>
+      </div>
+      <div>
+        <p>Efficiency</p>
+        <Input type="number" name="efficiency" value={efficiency} onFocus={(e)=>{e.target.select()}} onChange={efficiencyChangeHandler}/>
+      </div>
     </REInputsContainer>
   )
 }
@@ -30,6 +36,11 @@ const REInputsContainer = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
+  & p {
+    text-align: center;
+    margin: 0;
+    margin-top: 8px;
+  }
 `
 
 const Input = styled.input`

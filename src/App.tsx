@@ -14,7 +14,6 @@ const App = () => {
 const Main = styled.div`
   font-family: "Roboto", sans-serif;
   display: flex;
-  height: 100vh;
   width: 100%;
   justify-content: space-around;
 `
