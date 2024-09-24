@@ -3,6 +3,7 @@ import RangeEfficiencyInputs from "./RangeEfficiencyInputs"
 import SystemInput from "./SystemInput"
 import { useContext } from "react"
 import RouteDataContext from "../../store/routeData"
+import styled from "styled-components"
 
 const PlotSettings = () => {
   const routeData = useContext(RouteDataContext)
@@ -32,18 +33,43 @@ const PlotSettings = () => {
   }
 
   return (
-    <div>
+    <SettingsContainer>
       <h1>Plot Settings</h1>
-      <form onSubmit={plotSubmitHandler}>
+      <Settings onSubmit={plotSubmitHandler}>
         <SystemInput placeholder="Source" />
         {/* might have via because it's kinda useful sometimes */}
         <SystemInput placeholder="Destination" />
         {/* maybe reverse route? */}
         <RangeEfficiencyInputs />
-        <input type="submit" value="Plot route" />
-      </form>
-    </div>
+        <PlotRoute type="submit" value="Plot route" />
+      </Settings>
+    </SettingsContainer>
   )
 }
+
+const SettingsContainer = styled.div`
+  position: sticky;
+`
+
+const Settings = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const PlotRoute = styled.input`
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  width: 335px;
+  transition: 0.25s;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #ddd;
+  }
+`
 
 export default PlotSettings
